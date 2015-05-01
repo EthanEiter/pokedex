@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Pokedex.ViewModels.TrainerPercentageGroup>
+
+@{
+    ViewBag.Title = "Trainer Statistics";
+}
+
+<h2>Trainer Statistics</h2>
+
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@using (Html.BeginForm("Percentage", "User", FormMethod.Get))
+{
+    <p>
+        Search by Trainer name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Trainer Name
+        </th>
+        <th>
+            Percentage Caught
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @item.percentage.ToString("N") %
+            </td>
+        </tr>
+    }
+</table>

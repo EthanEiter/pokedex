@@ -1,0 +1,135 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar{
+	border-bottom-right-radius: 30px;
+	border-bottom-left-radius: 30px;
+    border-bottom-style:solid;
+    border-bottom-width:thick;
+    border-color:#000000;
+    background:-webkit-gradient(linear, left top, left bottom, from(#bb0000), to(#ff0000));
+}
+.nav .navbar-nav > li > a{
+    margin-left:20px;
+}
+.navbar .navbar-nav > li > a {
+    margin-top:12px;
+    margin-bottom:10px;
+    font-weight:bold;
+    font-size:14px;
+    margin-right:10px;
+    padding-top:3px;
+    vertical-align:middle;
+    text-align:center;
+    display:inline-block;
+    width:115px;
+    height:30px;
+    color:#ffffff;
+    border-style:solid;
+    border-width:thin;
+    border-color:black;
+    -webkit-border-top-left-radius: 150px;
+    -moz-border-top-left-radius: 150px;
+    border-top-left-radius:150px;
+    -webkit-border-bottom-right-radius: 150px;
+    -moz-border-bottom-right-radius: 150px;
+    border-bottom-right-radius:150px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#327500), to(#00ff21));
+    background: -webkit-linear-gradient(top, #327500, #00ff21);
+    background: -moz-linear-gradient(top, #327500, #00ff21);
+    background: -ms-linear-gradient(top, #327500, #00ff21);
+    background: -o-linear-gradient(top, #327500, #00ff21);
+}
+.navbar .navbar-nav > li > a:hover {
+    color:#000000;
+}
+.navbar .navbar-nav > li > a:active {
+    background:-webkit-gradient(linear, left top, left bottom, from(#00ff21), to(#327500));
+    background: -webkit-linear-gradient(top, #00ff21, #327500);
+    background: -moz-linear-gradient(top, #00ff21, #327500);
+    background: -ms-linear-gradient(top, #00ff21, #327500);
+    background: -o-linear-gradient(top, #00ff21, #327500);
+}
+.jumbotron {
+    background-color:#bb0000;
+}
+.jumbotron h1 {
+    color:#ffffff;
+}
+.jumbotron p{
+    color:#cacaca;
+}
+.dropdown-menu > li > a{
+    background-color:#327500;
+    color:#ffffff;
+}
+
+.navbar-inverse .navbar-brand{
+    font-weight:bold;
+    margin: 5px 20px 5px 15px;
+    padding:10px;
+    vertical-align:middle;
+    text-align:center;
+    display:inline-block;
+    width:45px;
+    height:45px;
+    color:#ffffff;
+    border-style:solid;
+    border-width:thin;
+    border-color:black;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius:25px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#0026ff), to(#00ffff));
+    background: -webkit-linear-gradient(top, #0026ff, #00ffff);
+    background: -moz-linear-gradient(top, #0026ff, #00ffff);
+    background: -ms-linear-gradient(top, #0026ff, #00ffff);
+    background: -o-linear-gradient(top, #0026ff, #00ffff);
+}
+.navbar-inverse .navbar-brand:hover{
+    color:#000000;
+    text-decoration: none;
+}
+.navbar-toggle{
+    border-color:transparent;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #327500;
+}
+
+footer.foot{
+    border-top-style:solid;
+    border-top-width:thick;
+    border-color:#000000;
+    background:-webkit-gradient(linear, left top, left bottom, from(#ff0000), to(#bb0000));
+	border-radius: 25px;
+}
+
+.foot > p{
+    color:#ffffff;
+    padding:15px;
+}

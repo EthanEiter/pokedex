@@ -1,0 +1,120 @@
+﻿@model Pokedex.Models.PKMN
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pok&eacute;mon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Pok&eacute;mon Number:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PKMNID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtype):
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtype)
+        </dd>
+    </dl>
+
+    @if (Model.CanLearns.Count() == 0)
+    {
+        <br />
+
+        <h3>@Html.DisplayFor(model => model.Name) can learn no TMs or HMs</h3>
+    }
+
+    @if (Model.CanLearns.Count() != 0)
+    {
+        <br />
+        
+        <h3>@Html.DisplayFor(model => model.Name) can learn the following TMs &amp; HMs:</h3>
+        <table class="table">
+            <tr>
+                <th>TM/HM Number</th>
+                <th>Name</th>
+                <th>Type</th>
+            </tr>
+            @foreach (var item in Model.CanLearns)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TMHMID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TMHM.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TMHM.Type)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    @if (Model.FoundAts.Count() == 0)
+    {
+        <br />
+
+        <h3>@Html.DisplayFor(model => model.Name) can not be found in any areas</h3>
+    }
+
+    @if (Model.FoundAts.Count() != 0)
+    {
+        <br />
+        
+        <h3>@Html.DisplayFor(model => model.Name) can be found in these areas:</h3>
+        <table class="table">
+            <tr>
+                <th>Map Name</th>
+                <th>Region</th>
+                <th>Notes</th>
+            </tr>
+            @foreach (var item in Model.FoundAts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Map.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Map.Region)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                </tr>
+            }
+        </table>
+    }
+    @*
+    <h3>Evolves from
+        @Html.DisplayFor(model => model.Evolution)
+    </h3>
+    *@
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

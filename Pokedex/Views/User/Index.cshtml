@@ -1,0 +1,138 @@
+﻿@*@model PagedList.IPagedList<Pokedex.Models.User>*@
+@model Pokedex.ViewModels.UserIndexData
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+@{
+    ViewBag.Title = "Trainers";
+}
+
+<h2>Trainers</h2>
+
+<p>
+    @Html.ActionLink("Add Trainer", "Create") |
+    @Html.ActionLink("Trainer Statistics", "Percentage")
+</p>
+
+@using (Html.BeginForm("Index", "User", FormMethod.Get))
+{
+    <p>
+        Search by Trainer name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Trainer Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Users)
+{
+    string selectedRow = "";
+    if (item.UserID == ViewBag.UserID)
+    {
+        selectedRow = "success";
+    }
+    <tr class="@selectedRow">
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Add/Remove", "Edit", new { id = item.UserID }) |
+            @Html.ActionLink("Select", "Index", new { id = item.UserID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+        </td>
+    </tr>
+}
+
+</table>
+
+@*
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+*@
+@if (Model.Caughts != null && Model.Caughts.Count() == 0)
+{
+    <h3>@Html.DisplayFor(model => model.userName) has caught no Pok&eacute;mon</h3>
+}
+
+@if (Model.Caughts != null && Model.Caughts.Count() != 0)
+{
+    <h3>Pok&eacute;mon caught by @Html.DisplayFor(model => model.userName)</h3>
+    <table class="table">
+        <tr>
+            <th>Pok&eacute;mon Number</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Subtype</th>
+            <th></th>
+        </tr>
+        
+        @foreach (var item in Model.Caughts)
+        {
+            string selectedRow = "";
+            if (item.PKMNID == ViewBag.PKMNID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @item.PKMN.PKMNID.ToString("000")
+                </td>
+                <td>
+                    @item.PKMN.Name
+                </td>
+                <td>
+                    @item.PKMN.Type
+                </td>
+                <td>
+                    @(item.PKMN.Subtype == null ? "No Subtype" : item.PKMN.Subtype)
+                </td>
+                <td>
+                    @Html.ActionLink("Select", "Index", new { pkmnid = item.PKMNID })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@if (Model.CanLearns != null && Model.CanLearns.Count() == 0)
+{
+    <h3>@Html.DisplayFor(model => model.pokeName) can learn no TMs or HMs </h3>
+}
+
+@if (Model.CanLearns != null && Model.CanLearns.Count() != 0)
+{
+    <h3>TMs &amp; HMs @Html.DisplayFor(model => model.pokeName) can learn</h3>
+    <table class="table">
+        <tr>
+            <th>TM/HM Number</th>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+
+        @foreach (var item in Model.CanLearns)
+        {
+           <tr>
+                <td>
+                    @item.TMHM.TMHMID
+                </td>
+                <td>
+                    @item.TMHM.Name
+                </td>
+                <td>
+                    @item.TMHM.Type
+                </td>
+            </tr>
+        }
+
+    </table>
+}

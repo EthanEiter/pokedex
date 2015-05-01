@@ -1,0 +1,34 @@
+﻿@model Pokedex.Models.FoundAt
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FoundAt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Map.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Map.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PKMN.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PKMN.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FoundAtID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

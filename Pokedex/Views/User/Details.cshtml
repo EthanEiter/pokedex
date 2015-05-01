@@ -1,0 +1,55 @@
+﻿@model Pokedex.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Trainers</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Trainer Name:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+        
+    <br />
+
+    <h3>@Html.DisplayFor(model => model.Name) has the following Pok&eacute;mon:</h3>
+    <table class="table">
+        <tr>
+            <th>Pok&eacute;mon Number</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Subtype</th>
+        </tr>
+        @foreach (var item in Model.Caughts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PKMNID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PKMN.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PKMN.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PKMN.Subtype)
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

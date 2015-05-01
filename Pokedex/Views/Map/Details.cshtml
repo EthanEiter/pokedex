@@ -1,0 +1,71 @@
+﻿@model Pokedex.Models.Map
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Map</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+
+    </dl>
+
+    @if(Model.FoundAts.Count() != 0)
+    { 
+        <br />
+
+        <h3>Pok&eacute;mon that can be found here [ @Html.DisplayFor(model => model.Name) ]:</h3>
+        <table class="table">
+            <tr>
+                <th>Pok&eacute;mon Number</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Subtpe</th>
+                <th>Notes</th>
+            </tr>
+            @foreach (var item in Model.FoundAts)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PKMN.PKMNID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PKMN.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PKMN.Type)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PKMN.Subtype)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Notes)
+                    </td>
+                
+                </tr>
+            }
+        </table>
+    }
+
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
